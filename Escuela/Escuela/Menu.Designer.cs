@@ -31,47 +31,38 @@ namespace Escuela
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.menuStrip3 = new System.Windows.Forms.MenuStrip();
             this.materiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.materia1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.materia2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.materia3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.materia4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.materia5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.porcentajesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gruposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grupo1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grupo2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.calificacionesTotalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.calificacionesParcial2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.calificacionesParcial3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.calificacionesFinalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.calificacionExamenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.calificacionProyectoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.calificacionTareasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.calificacionFinalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alumnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alumnosAprobadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alumnosReprobadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alumnosTotalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.creditosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.LBienbenida = new System.Windows.Forms.Label();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LBienbenida = new System.Windows.Forms.Label();
+            this.dgConsula = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.todasLasCalificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgConsula)).BeginInit();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 48);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(425, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // menuStrip2
             // 
             this.menuStrip2.Location = new System.Drawing.Point(0, 24);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(425, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(565, 24);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -85,51 +76,24 @@ namespace Escuela
             this.opcionesToolStripMenuItem});
             this.menuStrip3.Location = new System.Drawing.Point(0, 0);
             this.menuStrip3.Name = "menuStrip3";
-            this.menuStrip3.Size = new System.Drawing.Size(425, 24);
+            this.menuStrip3.Size = new System.Drawing.Size(565, 24);
             this.menuStrip3.TabIndex = 2;
             this.menuStrip3.Text = "menuStrip3";
             // 
             // materiasToolStripMenuItem
             // 
             this.materiasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.materia1ToolStripMenuItem,
-            this.materia2ToolStripMenuItem,
-            this.materia3ToolStripMenuItem,
-            this.materia4ToolStripMenuItem,
-            this.materia5ToolStripMenuItem});
+            this.porcentajesToolStripMenuItem});
             this.materiasToolStripMenuItem.Name = "materiasToolStripMenuItem";
-            this.materiasToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.materiasToolStripMenuItem.Text = "Materias";
+            this.materiasToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.materiasToolStripMenuItem.Text = "Evaluacion";
             // 
-            // materia1ToolStripMenuItem
+            // porcentajesToolStripMenuItem
             // 
-            this.materia1ToolStripMenuItem.Name = "materia1ToolStripMenuItem";
-            this.materia1ToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
-            this.materia1ToolStripMenuItem.Text = "Materia 1";
-            // 
-            // materia2ToolStripMenuItem
-            // 
-            this.materia2ToolStripMenuItem.Name = "materia2ToolStripMenuItem";
-            this.materia2ToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
-            this.materia2ToolStripMenuItem.Text = "Materia 2";
-            // 
-            // materia3ToolStripMenuItem
-            // 
-            this.materia3ToolStripMenuItem.Name = "materia3ToolStripMenuItem";
-            this.materia3ToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
-            this.materia3ToolStripMenuItem.Text = "Materia 3";
-            // 
-            // materia4ToolStripMenuItem
-            // 
-            this.materia4ToolStripMenuItem.Name = "materia4ToolStripMenuItem";
-            this.materia4ToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
-            this.materia4ToolStripMenuItem.Text = "Materia 4";
-            // 
-            // materia5ToolStripMenuItem
-            // 
-            this.materia5ToolStripMenuItem.Name = "materia5ToolStripMenuItem";
-            this.materia5ToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
-            this.materia5ToolStripMenuItem.Text = "Materia 5";
+            this.porcentajesToolStripMenuItem.Name = "porcentajesToolStripMenuItem";
+            this.porcentajesToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.porcentajesToolStripMenuItem.Text = "Porcentajes";
+            this.porcentajesToolStripMenuItem.Click += new System.EventHandler(this.porcentajesToolStripMenuItem_Click);
             // 
             // gruposToolStripMenuItem
             // 
@@ -145,47 +109,54 @@ namespace Escuela
             this.grupo1ToolStripMenuItem.Name = "grupo1ToolStripMenuItem";
             this.grupo1ToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.grupo1ToolStripMenuItem.Text = "Grupo 1";
+            this.grupo1ToolStripMenuItem.Click += new System.EventHandler(this.grupo1ToolStripMenuItem_Click);
             // 
             // grupo2ToolStripMenuItem
             // 
             this.grupo2ToolStripMenuItem.Name = "grupo2ToolStripMenuItem";
             this.grupo2ToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.grupo2ToolStripMenuItem.Text = "Grupo 2";
+            this.grupo2ToolStripMenuItem.Click += new System.EventHandler(this.grupo2ToolStripMenuItem_Click);
             // 
             // calificacionesToolStripMenuItem
             // 
             this.calificacionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.calificacionesTotalesToolStripMenuItem,
-            this.calificacionesParcial2ToolStripMenuItem,
-            this.calificacionesParcial3ToolStripMenuItem,
-            this.calificacionesFinalesToolStripMenuItem});
+            this.calificacionExamenToolStripMenuItem,
+            this.calificacionProyectoToolStripMenuItem,
+            this.calificacionTareasToolStripMenuItem,
+            this.calificacionFinalToolStripMenuItem,
+            this.todasLasCalificacionesToolStripMenuItem});
             this.calificacionesToolStripMenuItem.Name = "calificacionesToolStripMenuItem";
             this.calificacionesToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
             this.calificacionesToolStripMenuItem.Text = "Calificaciones";
             // 
-            // calificacionesTotalesToolStripMenuItem
+            // calificacionExamenToolStripMenuItem
             // 
-            this.calificacionesTotalesToolStripMenuItem.Name = "calificacionesTotalesToolStripMenuItem";
-            this.calificacionesTotalesToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.calificacionesTotalesToolStripMenuItem.Text = "Calificaciones parcial 1";
+            this.calificacionExamenToolStripMenuItem.Name = "calificacionExamenToolStripMenuItem";
+            this.calificacionExamenToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.calificacionExamenToolStripMenuItem.Text = "Calificacion Examen";
+            this.calificacionExamenToolStripMenuItem.Click += new System.EventHandler(this.calificacionExamenToolStripMenuItem_Click);
             // 
-            // calificacionesParcial2ToolStripMenuItem
+            // calificacionProyectoToolStripMenuItem
             // 
-            this.calificacionesParcial2ToolStripMenuItem.Name = "calificacionesParcial2ToolStripMenuItem";
-            this.calificacionesParcial2ToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.calificacionesParcial2ToolStripMenuItem.Text = "Calificaciones parcial 2";
+            this.calificacionProyectoToolStripMenuItem.Name = "calificacionProyectoToolStripMenuItem";
+            this.calificacionProyectoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.calificacionProyectoToolStripMenuItem.Text = "Calificacion Proyecto";
+            this.calificacionProyectoToolStripMenuItem.Click += new System.EventHandler(this.calificacionProyectoToolStripMenuItem_Click);
             // 
-            // calificacionesParcial3ToolStripMenuItem
+            // calificacionTareasToolStripMenuItem
             // 
-            this.calificacionesParcial3ToolStripMenuItem.Name = "calificacionesParcial3ToolStripMenuItem";
-            this.calificacionesParcial3ToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.calificacionesParcial3ToolStripMenuItem.Text = "Calificaciones parcial 3";
+            this.calificacionTareasToolStripMenuItem.Name = "calificacionTareasToolStripMenuItem";
+            this.calificacionTareasToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.calificacionTareasToolStripMenuItem.Text = "Calificacion Tareas";
+            this.calificacionTareasToolStripMenuItem.Click += new System.EventHandler(this.calificacionTareasToolStripMenuItem_Click);
             // 
-            // calificacionesFinalesToolStripMenuItem
+            // calificacionFinalToolStripMenuItem
             // 
-            this.calificacionesFinalesToolStripMenuItem.Name = "calificacionesFinalesToolStripMenuItem";
-            this.calificacionesFinalesToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.calificacionesFinalesToolStripMenuItem.Text = "Calificaciones finales";
+            this.calificacionFinalToolStripMenuItem.Name = "calificacionFinalToolStripMenuItem";
+            this.calificacionFinalToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.calificacionFinalToolStripMenuItem.Text = "Calificacion Final";
+            this.calificacionFinalToolStripMenuItem.Click += new System.EventHandler(this.calificacionFinalToolStripMenuItem_Click);
             // 
             // alumnosToolStripMenuItem
             // 
@@ -202,18 +173,21 @@ namespace Escuela
             this.alumnosAprobadosToolStripMenuItem.Name = "alumnosAprobadosToolStripMenuItem";
             this.alumnosAprobadosToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.alumnosAprobadosToolStripMenuItem.Text = "Alumnos aprobados";
+            this.alumnosAprobadosToolStripMenuItem.Click += new System.EventHandler(this.alumnosAprobadosToolStripMenuItem_Click);
             // 
             // alumnosReprobadosToolStripMenuItem
             // 
             this.alumnosReprobadosToolStripMenuItem.Name = "alumnosReprobadosToolStripMenuItem";
             this.alumnosReprobadosToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.alumnosReprobadosToolStripMenuItem.Text = "Alumnos reprobados";
+            this.alumnosReprobadosToolStripMenuItem.Click += new System.EventHandler(this.alumnosReprobadosToolStripMenuItem_Click);
             // 
             // alumnosTotalesToolStripMenuItem
             // 
             this.alumnosTotalesToolStripMenuItem.Name = "alumnosTotalesToolStripMenuItem";
             this.alumnosTotalesToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.alumnosTotalesToolStripMenuItem.Text = "Alumnos totales";
+            this.alumnosTotalesToolStripMenuItem.Click += new System.EventHandler(this.alumnosTotalesToolStripMenuItem_Click);
             // 
             // opcionesToolStripMenuItem
             // 
@@ -228,9 +202,17 @@ namespace Escuela
             // 
             this.creditosToolStripMenuItem.Name = "creditosToolStripMenuItem";
             this.creditosToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F11;
-            this.creditosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.creditosToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.creditosToolStripMenuItem.Text = "Creditos";
             this.creditosToolStripMenuItem.Click += new System.EventHandler(this.creditosToolStripMenuItem_Click);
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // LBienbenida
             // 
@@ -241,37 +223,55 @@ namespace Escuela
             this.LBienbenida.Size = new System.Drawing.Size(0, 47);
             this.LBienbenida.TabIndex = 3;
             // 
-            // salirToolStripMenuItem
+            // dgConsula
             // 
-            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.salirToolStripMenuItem.Text = "Salir";
-            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            this.dgConsula.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgConsula.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgConsula.GridColor = System.Drawing.SystemColors.Control;
+            this.dgConsula.Location = new System.Drawing.Point(12, 51);
+            this.dgConsula.Name = "dgConsula";
+            this.dgConsula.Size = new System.Drawing.Size(541, 140);
+            this.dgConsula.TabIndex = 4;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(209, 203);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(173, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Actualizar Calificacion";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // todasLasCalificacionesToolStripMenuItem
+            // 
+            this.todasLasCalificacionesToolStripMenuItem.Name = "todasLasCalificacionesToolStripMenuItem";
+            this.todasLasCalificacionesToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.todasLasCalificacionesToolStripMenuItem.Text = "Todas las Calificaciones";
+            this.todasLasCalificacionesToolStripMenuItem.Click += new System.EventHandler(this.todasLasCalificacionesToolStripMenuItem_Click);
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 228);
+            this.ClientSize = new System.Drawing.Size(565, 238);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.dgConsula);
             this.Controls.Add(this.LBienbenida);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.menuStrip3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Menu";
             this.Text = "Menu";
             this.menuStrip3.ResumeLayout(false);
             this.menuStrip3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgConsula)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.MenuStrip menuStrip3;
         private System.Windows.Forms.ToolStripMenuItem materiasToolStripMenuItem;
@@ -280,21 +280,20 @@ namespace Escuela
         private System.Windows.Forms.ToolStripMenuItem alumnosToolStripMenuItem;
         private System.Windows.Forms.Label LBienbenida;
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem materia1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem materia2ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem materia3ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem materia4ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem materia5ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem grupo1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem grupo2ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem calificacionesTotalesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem calificacionesParcial2ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem calificacionesParcial3ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem calificacionesFinalesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alumnosAprobadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alumnosReprobadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alumnosTotalesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem creditosToolStripMenuItem;
         private ToolStripMenuItem salirToolStripMenuItem;
+        private DataGridView dgConsula;
+        private ToolStripMenuItem porcentajesToolStripMenuItem;
+        private Button button1;
+        private ToolStripMenuItem calificacionExamenToolStripMenuItem;
+        private ToolStripMenuItem calificacionProyectoToolStripMenuItem;
+        private ToolStripMenuItem calificacionTareasToolStripMenuItem;
+        private ToolStripMenuItem calificacionFinalToolStripMenuItem;
+        private ToolStripMenuItem todasLasCalificacionesToolStripMenuItem;
     }
 }

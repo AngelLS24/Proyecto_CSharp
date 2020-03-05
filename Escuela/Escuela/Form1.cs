@@ -70,20 +70,16 @@ namespace Escuela
             // Valida que no se ingresen valores nulos o campos vacios
             if (!String.IsNullOrEmpty(user) && !String.IsNullOrEmpty(pass))
             {
-                try
+                // llama a la funcion para conectarse a la base de dato, recibe el usuario y password
+                Tuple<bool, SqlConnection> conexion = ConectaDB(user, pass);
+                if (conexion.Item1)
                 {
-                    // llama a la funcion para conectarse a la base de dato, recibe el usuario y password
-                    string conexion = ConectaDB(user, pass);
-                    // Inicia la vista del menu
-                    Menu menu = new Menu(user, conexion);
-                    // Hace visible el menu
-                    menu.Visible = true;
-                    // Hace invisible la vista principal
+                    Parametros parametros = new Parametros(user, conexion.Item2);
+                    parametros.Visible = true;
                     Visible = false;
                 }
-                catch (SqlException)
-                {
-                    Mensaje("\tContraseña o Usuario incorrectos\n\n\t\tIntento: " + cont, "Error");
+                else
+                {   
                     cont++;
                     if(cont > 3)
                     {
@@ -100,18 +96,29 @@ namespace Escuela
             MessageBox.Show(mensaje, titulo);
         }
 
-        public string ConectaDB(string user, string pass)
+        public Tuple<bool, SqlConnection> ConectaDB(string user, string pass)
         {
             // Se genera la cadena con la especificaciones de la coneccion a la base de datos
             string connectionString = @"Data Source=" + serverName + ";Initial Catalog=" + databaseName + 
                 ";User ID=" + user + ";Password=" + pass;
             // Se realiza la conexion
             SqlConnection conect = new SqlConnection(connectionString);
+            Tuple<bool, SqlConnection> conexion;
             // Abre la conexion
-            conect.Open();
-            Mensaje("Bienvenido de nuevo " + user, "Bienbenido");
-            conect.Close();
-            return connectionString;
+            try
+            {
+                conect.Open();
+                Mensaje("Bienvenido de nuevo " + user, "Bienvenido");
+                conect.Close();
+                conexion = new Tuple<bool, SqlConnection>(true, conect);
+                return conexion;
+            }
+            catch (Exception)
+            {
+                Mensaje("\tContraseña o Usuario incorrectos\n\n\t\tIntento: " + cont, "Error");
+                conexion = new Tuple<bool, SqlConnection>(false, conect);
+                return conexion;
+            }
         }
 
         private void BSalir_Click(object sender, EventArgs e)
@@ -131,16 +138,17 @@ namespace Escuela
         {
             // Funcion que guardara las consultas
             SqlCommand cmd = null;
+            string tabla = "alumnos";
             // Realiza una conexion a la base de datos
             SqlConnection conexion = new SqlConnection("Data Source=" + serverName +";Integrated security=SSPI;database=master");
             try
             {
                 // Llama a la funcion que crea la base de datos
                 CreateDB(conexion, cmd, databaseName);
-                // Llama a la funcion que crea el usuario/login de la base de datos
-                CreateUser(conexion, cmd, serverName, databaseName);
                 // Llama a la funcion que crea la tabla
-                CreateTables(conexion, cmd, databaseName, serverName);
+                CreateTables(conexion, cmd, tabla, databaseName, serverName);
+                // Llama a la funcion que crea el usuario/login de la base de datos
+                CreateUser(conexion, cmd, tabla, serverName, databaseName);
             }
             catch (Exception)
             {
@@ -175,7 +183,7 @@ namespace Escuela
 	        }
 	    }
 
-        public static void CreateUser(SqlConnection conexion, SqlCommand cmd, string serverName, string databaseName)
+        public static void CreateUser(SqlConnection conexion, SqlCommand cmd, string tabla, string serverName, string databaseName)
         {
             string log = "pepe"; // Alias
             string usr = "pepe"; // Nombre del usuario
@@ -184,6 +192,11 @@ namespace Escuela
             string login = "CREATE LOGIN " + log + " WITH PASSWORD = '" + pass +"'";
             // Se crea el usuario para el login
             string user = "CREATE USER " + usr + " FOR LOGIN " + log ;
+            // Se asigna el permiso de SELECT
+            string select = "GRANT SELECT ON OBJECT::" + tabla + " TO " + usr;
+            // Se asigna el permiso de UPDATE
+            string update = "GRANT UPDATE ON OBJECT::" + tabla + " TO " + usr;
+            //"GRANT SELECT ON SCHEMA :: [dbo] TO [NombreUsuario] WITH GRANT OPTION;";
             // Cierra la conexio si se encuentra abierta
             if (conexion.State == ConnectionState.Open)
                 conexion.Close();
@@ -198,6 +211,12 @@ namespace Escuela
                 cmd.ExecuteNonQuery();
                 // Ejecuta el query que crea al usuario
                 cmd = new SqlCommand(user, conexion);
+                cmd.ExecuteNonQuery();
+                // Ejecuta query que asigna permiso SELECT
+                cmd = new SqlCommand(select, conexion);
+                cmd.ExecuteNonQuery();
+                // Ejecuta query que asigna permiso UPDATE
+                cmd = new SqlCommand(update, conexion);
                 cmd.ExecuteNonQuery();
 
                 MessageBox.Show("Se ha creado satisfactoriamente el inicio de sesión.");
@@ -215,7 +234,7 @@ namespace Escuela
             }
         }
         // Crea la tabla
-        public static void CreateTables(SqlConnection conexion, SqlCommand cmd, string databaseName, string serverName)
+        public static void CreateTables(SqlConnection conexion, SqlCommand cmd, string tabla, string databaseName, string serverName)
         {
             // Se genera la cadena con la especificaciones de la coneccion a la base de datos
             string conString = @"Data Source=" + serverName + ";Initial Catalog=" + databaseName + ";Integrated Security=SSPI";
@@ -226,9 +245,9 @@ namespace Escuela
                 conexion.Close();
             conexion.ConnectionString = conString;
             // Query que crea la base de datos
-            sql = "CREATE TABLE alumnos (id INT NOT NULL PRIMARY KEY," +
+            sql = "CREATE TABLE " + tabla + " (cuenta INT NOT NULL PRIMARY KEY," +
                 "nombre VARCHAR(20) NOT NULL, ap_paterno VARCHAR(20) NOT NULL, ap_materno VARCHAR(20) NOT NULL," +
-                "cal_examen REAL NOT NULL, cal_proyecto REAL NOT NULL, tareas INT NOT NULL, grupo INT NOT NULL)";
+                "cal_examen REAL NOT NULL, cal_proyecto REAL NOT NULL, cal_tareas REAL NOT NULL, cal_final REAL NOT NULL, grupo INT NOT NULL)";
             // Abre la conexion
             conexion.Open();
             cmd = new SqlCommand(sql, conexion);
@@ -243,24 +262,21 @@ namespace Escuela
                 // Contador, sera el id del alumno
                 int contador = 1000;
                 // Variables
-                int i1, i2, i3, examen, proyecto, tareas, grupo;
+                int i1, i2, i3, grupo;
                 Random rnum = new Random();
                 // Ejecuta el query con la creacion de la tabla
                 cmd.ExecuteNonQuery();
                 // Ciclo con el que se insertan los registros en la tabla
-                for(int i = 0; i < 30; i++)
+                for(int i = 0; i < 10; i++)
                 {
                     i1 = rnum.Next(nom.Length); // Iterador 1
                     i2 = rnum.Next(ape.Length); // Iterador 2
                     i3 = rnum.Next(ape.Length); // Iterador 3
-                    examen = rnum.Next(11); // Calificacion del examen
-                    proyecto = rnum.Next(6, 11); // Calificacion del proyecto
-                    tareas = rnum.Next(5); // Numero de tareas
                     grupo = rnum.Next(1, 3); // Grupo 1 o 2
                     // Se genera el query que realiza los inserts
-                    sql = "INSERT INTO alumnos(id, nombre, ap_paterno, ap_materno, cal_examen, cal_proyecto, tareas, grupo) " +
+                    sql = "INSERT INTO alumnos(cuenta, nombre, ap_paterno, ap_materno, cal_examen, cal_proyecto, cal_tareas, cal_final, grupo) " +
                     "VALUES (" + contador + ", '" + nom[i1] + "', '" + ape[i2] + "', '" + ape[i3] +"', " +
-                    "'"+ examen + "', '" + proyecto + "', '" + tareas + "', '"+ grupo +"') ";
+                    "'0', '0', '0', '0', '" + grupo + "') ";
                     // Guarda ek query
                     cmd = new SqlCommand(sql, conexion);
                     contador++;
